@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConexionDB {
 
         // 1. Atributos de configuración de la base de datos
-        private static final String URL = "jdbc:mysql:mysql-32224215-campoluis959-8cf6.b.aivencloud.com";
+        private static final String URL = "jdbc:mysql://mysql-32224215-campoluis959-8cf6.b.aivencloud.com:15765/";
         private static final String USER = "avnadmin";
         private static final String PASSWORD = "AVNS_0A3HJtkFe_kRi9fz0Fe"; // Cambia esto por tu contraseña de MySQL
 
