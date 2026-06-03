@@ -1,4 +1,4 @@
-package com.tecnostore.modelo;
+package model;
 
 public enum CategoriaGama {
     ALTA,

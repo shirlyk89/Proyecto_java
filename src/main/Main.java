@@ -1,22 +1,17 @@
 package main;
 
+import view.MenuCelulares;
+import view.MenuClientes;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        package main;
+//import view.MenuCelulares;
+//import view.MenuClientes;
 
-import java.util.Scanner;
-import view.MenuCelulares;
-import view.MenuClientes;
-// Importa los demás menús a medida que los crees:
-// import view.MenuVentas;
-// import view.MenuReportes;
-
-        public class Main {
-
-            public static void main(String[] args) {
-                // Creamos un único Scanner aquí y lo compartimos con los submenús
-                Scanner scanner = new Scanner(System.in);
+                Scanner sc = new Scanner(System.in);
                 int opcion = 0;
 
                 do {
@@ -33,24 +28,20 @@ import view.MenuClientes;
                     System.out.print("Seleccione una opción: ");
 
                     try {
-                        opcion = Integer.parseInt(scanner.nextLine());
+                        opcion = Integer.parseInt(sc.nextLine());
 
                         switch (opcion) {
                             case 1:
-                                // Llamamos al submenú de celulares en su propia clase
-                                MenuCelulares.mostrar(scanner);
+                                MenuCelulares.mostrar(sc);
                                 break;
                             case 2:
-                                // Llamamos al submenú de clientes en su propia clase
-                                MenuClientes.mostrar(scanner);
+                                //MenuClientes.mostrar(sc);
                                 break;
                             case 3:
                                 System.out.println("\n[Próximamente: Submenú de Ventas]");
-                                // MenuVentas.mostrar(scanner);
                                 break;
                             case 4:
                                 System.out.println("\n[Próximamente: Submenú de Reportes]");
-                                // MenuReportes.mostrar(scanner);
                                 break;
                             case 5:
                                 System.out.println("\n[Próximamente: Exportar a TXT]");
@@ -66,9 +57,8 @@ import view.MenuClientes;
                     }
                 } while (opcion != 6);
 
-                // Cerramos el scanner únicamente al salir definitivamente de la aplicación
-                scanner.close();
+
+                sc.close();
             }
         }
-        }
-    }
+

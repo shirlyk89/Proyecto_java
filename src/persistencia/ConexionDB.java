@@ -1,4 +1,4 @@
-package com.tecnostore.persistencia;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,11 +24,11 @@ public class ConexionDB {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 // Crear la conexión real
                 this.conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("✅ Conexión exitosa a la base de datos tecnostore_db.");
+                System.out.println(" Conexión exitosa a la base de datos tecnostore_db.");
             } catch (ClassNotFoundException e) {
-                System.err.println("❌ Error: No se encontró el Driver de MySQL. " + e.getMessage());
+                System.err.println(" Error: No se encontró el Driver de MySQL. " + e.getMessage());
             } catch (SQLException e) {
-                System.err.println("❌ Error al conectar a la base de datos: " + e.getMessage());
+                System.err.println(" Error al conectar a la base de datos: " + e.getMessage());
             }
         }
 

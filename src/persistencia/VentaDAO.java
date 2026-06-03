@@ -1,4 +1,4 @@
-package dao;
+package persistencia;
 
 public class VentaDAO {
 }
