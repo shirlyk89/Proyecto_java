@@ -2,6 +2,7 @@ package main;
 
 import view.MenuCelulares;
 import view.MenuClientes;
+import view.MenuVentas;
 
 import java.util.Scanner;
 
@@ -35,10 +36,10 @@ public class Main {
                                 MenuCelulares.mostrar(sc);
                                 break;
                             case 2:
-                                //MenuClientes.mostrar(sc);
+                                MenuClientes.mostrar(sc);
                                 break;
                             case 3:
-                                System.out.println("\n[Próximamente: Submenú de Ventas]");
+                                MenuVentas.mostrar(sc);
                                 break;
                             case 4:
                                 System.out.println("\n[Próximamente: Submenú de Reportes]");
