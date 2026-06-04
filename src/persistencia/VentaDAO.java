@@ -1,7 +1,7 @@
 package persistencia;
 
-import modelo.Venta;
-import modelo.ItemVenta;
+import model.Venta;
+import model.ItemVenta;
 import java.sql.*;
 
 public class VentaDAO {

@@ -1,6 +1,7 @@
 package view;
 
 import controller.GestorCelulares;
+import model.CategoriaGama;
 import model.Celular;
 import utils.Validador;
 
@@ -68,8 +69,20 @@ public class MenuCelulares {
                         String so = sc.nextLine();
                         System.out.println("GAMA: ('Alta', 'Media', 'Baja'): ");
                         String gama = sc.nextLine().toUpperCase();
+                        CategoriaGama gamaEnum = CategoriaGama.valueOf(gama);
                         System.out.println("\n ¡Datos capturados correctamente!");
-                        System.out.println("Proximamente: Enviando a FactoryCelular y guardando en DB...");
+                        Celular nuevoCelular = new Celular(0, marca, modelo, so, gamaEnum, precio, stock);
+
+                        // 2. Instanciamos tu gestor
+                        GestorCelulares gestor = new GestorCelulares();
+
+                        // 3. Llamamos a tu método y guardamos la respuesta en un String
+                        String respuesta = gestor.registrarCelular(nuevoCelular);
+
+                        // 4. Imprimimos el mensaje real que devuelve tu método ("Celular registrado exitosamente...")
+                        System.out.println("\n" + respuesta);
+
+                       //System.out.println("Proximamente: Enviando a FactoryCelular y guardando en DB...");
                         break;
 
 
@@ -79,7 +92,7 @@ public class MenuCelulares {
                         System.out.println("================================================================================");
 
                         try {
-                            GestorCelulares gestor = new GestorCelulares();
+                            gestor = new GestorCelulares();
 
                             List<Celular> listaCelulares = gestor.obtenerTodosLosCelulares();
 

@@ -8,7 +8,7 @@ import java.util.List;
 public class GestorCelulares {
    private CelularDAO celularDAO;
 
-    public void CelularControlador() {
+    public GestorCelulares() {
         this.celularDAO = new CelularDAO();
     }
 

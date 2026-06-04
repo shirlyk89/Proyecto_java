@@ -1,8 +1,8 @@
 package persistencia;
 
 
-import modelo.Celular;
-import modelo.CategoriaGama;
+import model.Celular;
+import model.CategoriaGama;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
