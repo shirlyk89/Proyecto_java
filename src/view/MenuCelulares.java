@@ -1,7 +1,11 @@
 package view;
 
+import controller.GestorCelulares;
+import model.Celular;
 import utils.Validador;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuCelulares {
@@ -70,8 +74,40 @@ public class MenuCelulares {
 
 
                     case 2:
-                        System.out.println("\n[ Listando todos los celulares registrados.... ]");
+                        System.out.println("\n================================================================================");
+                        System.out.println("                         CATÁLOGO DE CELULARES REGISTRADOS                      ");
+                        System.out.println("================================================================================");
+
+                        try {
+                            GestorCelulares gestor = new GestorCelulares();
+
+                            List<Celular> listaCelulares = gestor.obtenerTodosLosCelulares();
+
+                            if (listaCelulares.isEmpty()) {
+                                System.out.println(" No hay ningún celular registrado en el sistema actualmente.");
+                            } else {
+
+                                System.out.printf("%-5s | %-12s | %-15s | %-12s | %-7s | %-10s\n",
+                                        "ID", "MARCA", "MODELO", "PRECIO", "STOCK", "GAMA");
+                                System.out.println("--------------------------------------------------------------------------------");
+
+                                for (Celular cel : listaCelulares) {
+                                    System.out.printf("%-5d | %-12s | %-15s | $%-11.2f | %-7d | %-10s\n",
+                                            cel.getId(),
+                                            cel.getMarca(),
+                                            cel.getModelo(),
+                                            cel.getPrecio(),
+                                            cel.getStock(),
+                                            cel.getGama().toString()
+                                    );
+                                }
+                            }
+                        } catch (SQLException e) {
+                            System.out.println("Error al intentar conectar con la Base de Datos: " + e.getMessage());
+                        }
+                        System.out.println("================================================================================");
                         break;
+
 
                     case 3:
                         System.out.println("\n[ Modificando celular... ]");
