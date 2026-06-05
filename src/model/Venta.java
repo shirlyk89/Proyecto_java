@@ -50,10 +50,10 @@ public class Venta {
             sumaSubtotales += item.getSubtotal();
         }
 
-        // Aplicamos la estrategia de descuento al subtotal
+        // se Agrega la estrategia de descuento al subtotal
         double subtotalConDescuento = estrategiaDescuento.aplicarDescuento(sumaSubtotales);
 
-        //  Aplicamos el 19% de IVA al valor ya descontado
+        //  se Agrega el 19% de IVA al valor ya descontado
         this.total = subtotalConDescuento * 1.19;
     }
 
