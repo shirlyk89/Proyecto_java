@@ -70,7 +70,7 @@ public class MenuVentas {
                         System.out.println(" Verificando stock disponible del celular... (Próximamente)");
                         System.out.println(" Celular agregado al carrito temporal.");
 
-                        // Preguntar si desea continuar comprando
+                     
                         System.out.print("¿Desea agregar otro celular a esta venta? (S/N): ");
                         String respuesta = sc.nextLine().trim().toUpperCase();
                         if (respuesta.equals("N")) {
@@ -79,7 +79,7 @@ public class MenuVentas {
 
                     } while (agregandoProducto);
 
-                    // 3. CÁLCULO TOTAL DE LA VENTA (Simulación)
+                   // Calculo de la venta
                     System.out.println("\n--- RESUMEN DE FACTURACIÓN ---");
                     System.out.println("Subtotal (Sin IVA): $X.XXX (Calculado con lógica)");
                     System.out.println("IVA (19%): $X.XXX");
@@ -87,11 +87,11 @@ public class MenuVentas {
 
                     System.out.println("\n ¡Venta procesada con éxito!");
                     System.out.println("Próximamente: Guardando factura en tablas 'ventas' y 'detalle_ventas' mediante JDBC...");
-                    break; // Cierra el case 1
+                    break; 
 
                     case 2:
                         System.out.println("Regresando al menú principal...");
-                        break; // Cierra el case 2
+                        break; 
 
                     default:
                         System.out.println(" Opción no válida (1-2).");
