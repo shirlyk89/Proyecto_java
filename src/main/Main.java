@@ -5,6 +5,7 @@ import view.MenuClientes;
 import view.MenuVentas;
 
 import java.util.Scanner;
+import view.MenuReportes;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,16 +18,16 @@ public class Main {
 
                 do {
                     System.out.println("\n========================================");
-                    System.out.println("     SISTEMA DE GESTIÓN TECNOSTORE      ");
+                    System.out.println("     SISTEMA DE GESTION TECNOSTORE      ");
                     System.out.println("========================================");
-                    System.out.println("1. Gestión de Celulares (Inventario)");
-                    System.out.println("2. Gestión de Clientes");
-                    System.out.println("3. Registrar una Venta (Facturación)");
-                    System.out.println("4. Reportes y Análisis (Stream API)");
+                    System.out.println("1. Gestion de Celulares (Inventario)");
+                    System.out.println("2. Gestion de Clientes");
+                    System.out.println("3. Registrar una Venta (Facturacion)");
+                    System.out.println("4. Reportes y Analisis (Stream API)");
                     System.out.println("5. Guardar y Exportar Reporte (.txt)");
                     System.out.println("6. Salir del Sistema");
                     System.out.println("========================================");
-                    System.out.print("Seleccione una opción: ");
+                    System.out.print("Seleccione una opcion: ");
 
                     try {
                         opcion = Integer.parseInt(sc.nextLine());
@@ -42,19 +43,19 @@ public class Main {
                                 MenuVentas.mostrar(sc);
                                 break;
                             case 4:
-                                System.out.println("\n[Próximamente: Submenú de Reportes]");
+                                MenuReportes.mostrar(sc);
                                 break;
                             case 5:
-                                System.out.println("\n[Próximamente: Exportar a TXT]");
+                                System.out.println("\n[Proximamente: Exportar a TXT]");
                                 break;
                             case 6:
                                 System.out.println("\nCerrando sistema... ¡Gracias por usar TecnoStore!");
                                 break;
                             default:
-                                System.out.println("Opción no válida. Intente de nuevo.");
+                                System.out.println("Opcion no valida. Intente de nuevo.");
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Error: Por favor, ingrese un número entero válido.");
+                        System.out.println("Error: Por favor, ingrese un numero entero valido.");
                     }
                 } while (opcion != 6);
 

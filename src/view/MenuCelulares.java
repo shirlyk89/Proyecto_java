@@ -14,92 +14,81 @@ public class MenuCelulares {
     public static void mostrar(Scanner sc){
         int opcion = 0;
         do {
-            System.out.println("\n--- SUBMENÚ CELULARES ---");
+            System.out.println("\n--- SUBMENU CELULARES ---");
             System.out.println("1. Registrar Celular");
             System.out.println("2. Listar Catalogo");
             System.out.println("3. Actualizar Celular");
             System.out.println("4. Eliminar Celular");
             System.out.println("5. Volver al Menú Principal");
             System.out.print("Seleccione una opción: ");
-            try{
+            try {
                 opcion = Integer.parseInt(sc.nextLine());
 
                 switch (opcion){
                     case 1:
-                    System.out.println("Registrando...");
-                    System.out.print("Marca: "); String marca = sc.nextLine();
-                    System.out.print("Modelo: "); String modelo = sc.nextLine();
+                        System.out.println("\n--- REGISTRAR CELULAR ---");
+                        System.out.print("Marca: "); String marca = sc.nextLine();
+                        System.out.print("Modelo: "); String modelo = sc.nextLine();
+                        
                         double precio = 0;
                         boolean precioValido = false;
-                    do {
-                        // PARA VALIDAR QUE EL PRECIO SEA VALIDO
-                        try {
-                            System.out.println("Precio: ");
-                            precio = Double.parseDouble(sc.nextLine());
+                        do {
+                            try {
+                                System.out.print("Precio: ");
+                                precio = Double.parseDouble(sc.nextLine());
 
-                            if (Validador.validarPrecio(precio)){
-                                precioValido = true;
-                            }else {
-                                System.out.println("ERROR. El precio debe ser un numero mayor a 0");
+                                if (Validador.validarPrecio(precio)){
+                                    precioValido = true;
+                                } else {
+                                    System.out.println("ERROR. El precio debe ser un numero mayor a 0");
+                                }
+                            } catch (NumberFormatException e){
+                                System.out.println("ERROR. Debe ingresar un valor numerico valido. No use letras");
                             }
-                        }catch (NumberFormatException e){
-                            System.out.println("ERROR. Debe ingresar un valor numerico valido. No use letras");
-                        }
-                    }while (!precioValido);
+                        } while (!precioValido);
+
                         int stock = 0;
                         boolean stockValido = false;
                         do {
-                            // VALIDAR QUE EL STOCK NO SEA 0
-                            try{
-                                System.out.println("Stock inicial: ");
+                            try {
+                                System.out.print("Stock inicial: ");
                                 stock = Integer.parseInt(sc.nextLine());
                                 if (Validador.validarStock(stock)){
                                     stockValido = true;
-                                }else{
+                                } else {
                                     System.out.println("ERROR. El stock debe ser mayor a 0");
                                 }
-                            }catch (NumberFormatException e){
+                            } catch (NumberFormatException e){
                                 System.out.println("ERROR. Debe ingresar un numero entero valido");
                             }
-                        }while (!stockValido);
+                        } while (!stockValido);
 
-                        // COMPLETAR OTRAS ESPECIFICACIONES
-
-                        System.out.println("Sistema Operativo");
+                        System.out.print("Sistema Operativo: ");
                         String so = sc.nextLine();
-                        System.out.println("GAMA: ('Alta', 'Media', 'Baja'): ");
+                        System.out.print("GAMA: ('Alta', 'Media', 'Baja'): ");
                         String gama = sc.nextLine().toUpperCase();
                         CategoriaGama gamaEnum = CategoriaGama.valueOf(gama);
-                        System.out.println("\n ¡Datos capturados correctamente!");
+                        
+                        System.out.println("\n✨ ¡Datos capturados correctamente!");
                         Celular nuevoCelular = new Celular(0, marca, modelo, so, gamaEnum, precio, stock);
 
-                        // 2. Instanciamos tu gestor
                         GestorCelulares gestor = new GestorCelulares();
-
-                        // 3. Llamamos a tu método y guardamos la respuesta en un String
                         String respuesta = gestor.registrarCelular(nuevoCelular);
-
-                        // 4. Imprimimos el mensaje real que devuelve tu método ("Celular registrado exitosamente...")
                         System.out.println("\n" + respuesta);
-
-                       //System.out.println("Proximamente: Enviando a FactoryCelular y guardando en DB...");
                         break;
-
 
                     case 2:
                         System.out.println("\n================================================================================");
-                        System.out.println("                         CATÁLOGO DE CELULARES REGISTRADOS                      ");
+                        System.out.println("                          CATÁLOGO DE CELULARES REGISTRADOS                      ");
                         System.out.println("================================================================================");
 
                         try {
                             gestor = new GestorCelulares();
-
                             List<Celular> listaCelulares = gestor.obtenerTodosLosCelulares();
 
                             if (listaCelulares.isEmpty()) {
-                                System.out.println(" No hay ningún celular registrado en el sistema actualmente.");
+                                System.out.println(" No hay ningun celular registrado en el sistema actualmente.");
                             } else {
-
                                 System.out.printf("%-5s | %-12s | %-15s | %-12s | %-7s | %-10s\n",
                                         "ID", "MARCA", "MODELO", "PRECIO", "STOCK", "GAMA");
                                 System.out.println("--------------------------------------------------------------------------------");
@@ -121,29 +110,118 @@ public class MenuCelulares {
                         System.out.println("================================================================================");
                         break;
 
+                    case 3: { 
+                        System.out.println("\n--- ACTUALIZAR CELULAR EXISTENTE ---");
+                        
+                        System.out.print("Ingrese el ID del celular a modificar: ");
+                        int idActualizar = Integer.parseInt(sc.nextLine());
 
-                    case 3:
-                        System.out.println("\n[ Modificando celular... ]");
-                        break;
+                        System.out.print("Nueva Marca: "); 
+                        String nuevaMarca = sc.nextLine();
+                        System.out.print("Nuevo Modelo: "); 
+                        String nuevoModelo = sc.nextLine();
+                        
+                        // VALIDACIÓN DEL NUEVO PRECIO
+                        double nuevoPrecio = 0;
+                        boolean nuevoPrecioValido = false;
+                        do {
+                            try {
+                                System.out.print("Nuevo Precio: ");
+                                nuevoPrecio = Double.parseDouble(sc.nextLine());
+                                if (Validador.validarPrecio(nuevoPrecio)){
+                                    nuevoPrecioValido = true;
+                                } else {
+                                    System.out.println("ERROR. El precio debe ser un numero mayor a 0");
+                                }
+                            } catch (NumberFormatException e){
+                                System.out.println("ERROR. Debe ingresar un valor numerico valido.");
+                            }
+                        } while (!nuevoPrecioValido);
 
-                    case 4:
-                        System.out.println("\n[ Eliminando celular... ]");
+                        // VALIDACIÓN DEL NUEVO STOCK 
+                        int nuevoStock = 0;
+                        boolean nuevoStockValido = false;
+                        do {
+                            try {
+                                System.out.print("Nuevo Stock: ");
+                                nuevoStock = Integer.parseInt(sc.nextLine());
+                                if (Validador.validarStock(nuevoStock)){
+                                    nuevoStockValido = true;
+                                } else {
+                                    System.out.println(" ERROR. El stock debe ser mayor a 0");
+                                }
+                            } catch (NumberFormatException e){
+                                System.out.println(" ERROR. Debe ingresar un numero entero valido");
+                            }
+                        } while (!nuevoStockValido);
+
+                        System.out.print("Nuevo Sistema Operativo: ");
+                        String nuevoSo = sc.nextLine();
+                        
+                        System.out.print("Nueva GAMA ('Alta', 'Media', 'Baja'): ");
+                        String nuevaGama = sc.nextLine().toUpperCase();
+                        CategoriaGama nuevaGamaEnum = CategoriaGama.valueOf(nuevaGama);
+
+                        System.out.println("\n⏳ Enviando actualización...");
+                        
+                        Celular celularModificado = new Celular(idActualizar, nuevaMarca, nuevoModelo, nuevoSo, nuevaGamaEnum, nuevoPrecio, nuevoStock);
+                        GestorCelulares gestorActualizacion = new GestorCelulares();
+                        
+                        
+                        String respuestaAct = gestorActualizacion.actualizarCelular(celularModificado);
+                        
+                        System.out.println(respuestaAct);
                         break;
+                    }
+
+                    case 4:{
+                        System.out.println("\n--- ELIMINAR CELULAR POR ID ---");
+
+                        int idEliminar = 0;
+                        boolean idValido = false;
+
+                        // Bucle para asegurar que ingresen un número válido
+                        do {
+                            try {
+                                System.out.print("Ingrese el ID del celular que desea eliminar: ");
+                                idEliminar = Integer.parseInt(sc.nextLine());
+                                idValido = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("❌ ERROR: El ID debe ser un número entero válido. Intente de nuevo.");
+                            }
+                        } while (!idValido);
+
+                        System.out.print("⚠️ ¿Está seguro que desea eliminar el celular con ID " + idEliminar + "? (S/N): ");
+                        String confirmacion = sc.nextLine().trim().toUpperCase();
+
+                        if (confirmacion.equals("S")) {
+                            System.out.println("\n⏳ Procesando eliminación en la Base de Datos...");
+
+                            // Instanciamos el controlador y llamamos a tu método
+                            GestorCelulares gestorEliminar = new GestorCelulares();
+                            String respuestaEliminar = gestorEliminar.eliminarCelular(idEliminar);
+
+                            // Imprimimos la respuesta real que retorna tu método
+                            System.out.println(respuestaEliminar);
+                        } else {
+                            System.out.println("❌ Operación cancelada por el usuario.");
+                        }
+                        break;
+                    }
 
                     case 5:
                         System.out.println("Regresando al menú principal...");
                         break;
+                } 
 
-                } // AQUÍ CIERRA EL SWITCH
-
-            }catch (NumberFormatException e){
-                System.out.println("Opcion invalida (1-5).");
+            } catch (NumberFormatException e){
+                System.out.println("Opción inválida. Asegúrese de ingresar un número entero (1-5).");
+            } catch (IllegalArgumentException e) {
+                System.out.println("ERROR: La gama ingresada no es válida. Use únicamente: Alta, Media o Baja.");
+            } catch (Exception e) {
+                System.out.println("Ocurrió un error inesperado: " + e.getMessage());
             }
 
-
-        }
-
-        while (opcion != 5);
-
+        } while (opcion != 5);
     }
 }
