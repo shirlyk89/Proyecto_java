@@ -46,7 +46,27 @@ public class Main {
                                 MenuReportes.mostrar(sc);
                                 break;
                             case 5:
-                                System.out.println("\n[Proximamente: Exportar a TXT]");
+                               System.out.println("\n[ Guardar y Exportar Reporte (.txt) ]");
+
+
+                                String textoAExportar = "====================================\n"
+                                        + "      REPORTE DE INVENTARIO         \n"
+                                        + "====================================\n"
+                                        + "Total de celulares registrados: ... \n"
+                                        + "Total de ventas: ... \n"
+                                        + "Generado por el sistema JavaPro.\n";
+
+                                // 2. Definimos el nombre del archivo
+                                String nombreDelArchivo = "Reporte_Sistema.txt";
+
+                                // 3. Llamamos a nuestra clase de utilidad
+                                boolean exportadoConExito = ArchivoUtils.exportarReporteTxt(nombreDelArchivo, textoAExportar);
+
+                                // 4. Le damos feedback al usuario
+                                if (exportadoConExito) {
+                                    System.out.println(" ¡Éxito! El reporte se ha guardado como: " + nombreDelArchivo);
+                                    System.out.println("Lo puedes encontrar en la carpeta principal de tu proyecto.");
+                                }
                                 break;
                             case 6:
                                 System.out.println("\nCerrando sistema... ¡Gracias por usar TecnoStore!");
