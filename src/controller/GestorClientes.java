@@ -12,7 +12,7 @@ public class GestorClientes {
     // Patrón Regex estándar para validar la estructura de un correo electrónico
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
 
-    public void ClienteControlador() {
+    public GestorClientes() {
         this.clienteDAO = new ClienteDAO();
     }
 
