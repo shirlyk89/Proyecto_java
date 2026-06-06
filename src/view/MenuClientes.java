@@ -53,8 +53,32 @@ public class MenuClientes {
                         System.out.println("Próximamente: Verificando unicidad en DB y guardando a través de ClienteDAO...");
                         break;
                     case 2:
-                        System.out.println("\n[ Listando todos los clientes registrados... ]");
+                      System.out.println("\n--- LISTADO DE CLIENTES REGISTRADOS ---");
+                        GestorClientes gestorClientes = new GestorClientes();
+                        try {
+
+                            List<Cliente> listaClientes = gestorClientes.obtenerTodosLosClientes();
+
+                            if (listaClientes.isEmpty()) {
+                                System.out.println("No hay clientes registrados en la base de datos.");
+                            } else {
+
+                                System.out.printf("%-5s %-20s %-15s %-20s %-15s%n", "ID", "NOMBRE", "IDENTIFICACIÓN", "CORREO", "TELÉFONO");
+                                System.out.println("----------------------------------------------------------------------------------");
+                                for (Cliente c : listaClientes) {
+                                    System.out.printf("%-5d %-20s %-15s %-20s %-15s%n",
+                                            c.getId(),
+                                            c.getNombre(),
+                                            c.getIdentificacion(),
+                                            c.getCorreo(),
+                                            c.getTelefono());
+                                }
+                            }
+                        } catch (SQLException e) {
+                            System.out.println(" Error al conectar con la base de datos: " + e.getMessage());
+                        }
                         break;
+
 
                     case 3:
                         System.out.println("Regresando al menú principal...");
