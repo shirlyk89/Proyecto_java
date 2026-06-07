@@ -1,6 +1,6 @@
 ====================================
       REPORTE DE INVENTARIO         
 ====================================
-Total de celulares registrados: ... 
-Total de ventas: ... 
-Generado por el sistema JavaPro.
+Total de celulares registrados: 9
+Total de ventas: $0.0
+Generado por el sistema TecnoStore.
