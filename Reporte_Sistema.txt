@@ -2,5 +2,5 @@
       REPORTE DE INVENTARIO         
 ====================================
 Total de celulares registrados: 9
-Total de ventas: $0.0
+Total de ventas: $5880.0
 Generado por el sistema TecnoStore.
