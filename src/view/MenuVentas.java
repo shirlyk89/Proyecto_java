@@ -1,6 +1,7 @@
 package view;
 
 import utils.Validador;
+import patron.EstrategiaDescuento;
 
 import java.util.Scanner;
 
