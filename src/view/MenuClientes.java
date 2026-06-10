@@ -1,6 +1,11 @@
 package view;
 
 import utils.Validador;
+import controller.GestorClientes;
+import java.sql.SQLException;
+import model.Cliente;
+
+import java.util.List;
 
 import java.util.Scanner;
 
