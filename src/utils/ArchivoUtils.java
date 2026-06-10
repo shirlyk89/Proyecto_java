@@ -1,4 +1,7 @@
 package utils;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ArchivoUtils {
   public static boolean exportarReporteTxt(String nombreArchivo, String contenidoReporte) {
