@@ -8,24 +8,29 @@ import utils.Validador;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+import utils.ArchivoUtils;
 
 public class MenuCelulares {
 
     public static void mostrar(Scanner sc){
         int opcion = 0;
         do {
+           
+            ArchivoUtils.limpiarConsola();
             System.out.println("\n--- SUBMENU CELULARES ---");
             System.out.println("1. Registrar Celular");
             System.out.println("2. Listar Catalogo");
             System.out.println("3. Actualizar Celular");
             System.out.println("4. Eliminar Celular");
-            System.out.println("5. Volver al Menú Principal");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("5. Volver al Menu Principal");
+            System.out.print("Seleccione una opcion: ");
             try {
                 opcion = Integer.parseInt(sc.nextLine());
 
                 switch (opcion){
                     case 1:
+                        ArchivoUtils.limpiarConsola();
+                        
                         System.out.println("\n--- REGISTRAR CELULAR ---");
                         System.out.print("Marca: "); String marca = sc.nextLine();
                         System.out.print("Modelo: "); String modelo = sc.nextLine();
@@ -78,8 +83,9 @@ public class MenuCelulares {
                         break;
 
                     case 2:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n================================================================================");
-                        System.out.println("                          CATÁLOGO DE CELULARES REGISTRADOS                      ");
+                        System.out.println("                          CATALOGO DE CELULARES REGISTRADOS                      ");
                         System.out.println("================================================================================");
 
                         try {
@@ -111,6 +117,7 @@ public class MenuCelulares {
                         break;
 
                     case 3: { 
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n--- ACTUALIZAR CELULAR EXISTENTE ---");
                         
                         System.out.print("Ingrese el ID del celular a modificar: ");
@@ -175,6 +182,7 @@ public class MenuCelulares {
                     }
 
                     case 4:{
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n--- ELIMINAR CELULAR POR ID ---");
 
                         int idEliminar = 0;
@@ -187,11 +195,11 @@ public class MenuCelulares {
                                 idEliminar = Integer.parseInt(sc.nextLine());
                                 idValido = true;
                             } catch (NumberFormatException e) {
-                                System.out.println("❌ ERROR: El ID debe ser un número entero válido. Intente de nuevo.");
+                                System.out.println(" ERROR: El ID debe ser un número entero valido. Intente de nuevo.");
                             }
                         } while (!idValido);
 
-                        System.out.print("⚠️ ¿Está seguro que desea eliminar el celular con ID " + idEliminar + "? (S/N): ");
+                        System.out.print(" ¿Esta seguro que desea eliminar el celular con ID " + idEliminar + "? (S/N): ");
                         String confirmacion = sc.nextLine().trim().toUpperCase();
 
                         if (confirmacion.equals("S")) {
@@ -204,22 +212,23 @@ public class MenuCelulares {
                             // Imprimimos la respuesta real que retorna tu método
                             System.out.println(respuestaEliminar);
                         } else {
-                            System.out.println("❌ Operación cancelada por el usuario.");
+                            System.out.println(" Operacion cancelada por el usuario.");
                         }
                         break;
                     }
 
                     case 5:
-                        System.out.println("Regresando al menú principal...");
+                        ArchivoUtils.limpiarConsola();
+                        System.out.println("Regresando al menu principal...");
                         break;
                 } 
 
             } catch (NumberFormatException e){
-                System.out.println("Opción inválida. Asegúrese de ingresar un número entero (1-5).");
+                System.out.println("Opcion invalida. Asegurese de ingresar un numero entero (1-5).");
             } catch (IllegalArgumentException e) {
-                System.out.println("ERROR: La gama ingresada no es válida. Use únicamente: Alta, Media o Baja.");
+                System.out.println("ERROR: La gama ingresada no es valida. Use unicamente: Alta, Media o Baja.");
             } catch (Exception e) {
-                System.out.println("Ocurrió un error inesperado: " + e.getMessage());
+                System.out.println("Ocurrio un error inesperado: " + e.getMessage());
             }
 
         } while (opcion != 5);
