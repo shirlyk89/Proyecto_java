@@ -132,6 +132,12 @@ public class MenuVentas {
 
                         // CÁLCULO REAL DEL SUBTOTAL ACUMULADO
                         subtotalAcumulado += (celular.getPrecio() * cantidad);
+                        
+                        int nuevoStock = celular.getStock() - cantidad;
+                        celular.setStock(nuevoStock);
+                        
+                        gestorCelulares.actualizarStock(celular.getId(), nuevoStock); 
+                        System.out.println(" -> [INFO] Inventario actualizado. Nuevo stock: " + nuevoStock);
 
                         // Preguntar si desea continuar comprando
                         System.out.print("\n¿Desea agregar otro celular a esta venta? (S/N): ");
@@ -210,5 +216,7 @@ public class MenuVentas {
             }
         }
     
+
+
 
 
