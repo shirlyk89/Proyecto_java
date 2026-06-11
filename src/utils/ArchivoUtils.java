@@ -1,7 +1,7 @@
 package utils;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.IOException;
 
 public class ArchivoUtils {
   public static boolean exportarReporteTxt(String nombreArchivo, String contenidoReporte) {
@@ -16,8 +16,6 @@ public class ArchivoUtils {
             return false;
         }
     }
-}
-
 public static void limpiarConsola() {
     System.out.println("\n----------------------------------------------------------------------");
     System.out.println(">>>>>>>>>>>>>>>>>>>> NAVEGACION: % TECNOSTORE % <<<<<<<<<<<<<<<<<<<<<<");
