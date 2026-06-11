@@ -66,4 +66,14 @@ public class GestorCelulares {
             return " Error al eliminar (es posible que esté asociado a una venta): " + e.getMessage();
         }
     }
+    
+    public Celular buscarCelularPorId(int id) {
+        try {
+            return celularDAO.buscarPorId(id);
+        } catch (SQLException e) {
+            System.out.println(" Error en la base de datos al buscar celular: " + e.getMessage());
+            return null;
+        }
+    }
 }
+
