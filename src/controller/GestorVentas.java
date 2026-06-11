@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class GestorVentas {
       private VentaDAO ventaDAO;
 
-    public void VentaControlador() {
+    public GestorVentas() {
         this.ventaDAO = new VentaDAO();
     }
 
@@ -43,4 +43,8 @@ public class GestorVentas {
             return " Error crítico al procesar la venta en la base de datos: " + e.getMessage();
         }
     }
+    
+    public double obtenerTotalDineroVentas() throws SQLException {
+    return ventaDAO.obtenerTotalVentas();
+}
 }
