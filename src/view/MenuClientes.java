@@ -81,10 +81,10 @@ public class MenuClientes {
                                 System.out.println("No hay clientes registrados en la base de datos.");
                             } else {
 
-                                System.out.printf("%-5s %-20s %-15s %-20s %-15s%n", "ID", "NOMBRE", "IDENTIFICACIÓN", "CORREO", "TELÉFONO");
+                                System.out.printf("| %-4s | %-30s | %-15s | %-30s | %-15s |%n", "ID", "NOMBRE", "IDENTIFICACIÓN", "CORREO", "TELÉFONO");
                                 System.out.println("----------------------------------------------------------------------------------");
                                 for (Cliente c : listaClientes) {
-                                    System.out.printf("%-5d %-20s %-15s %-20s %-15s%n",
+                                    System.out.printf("| %-4d | %-30.30s | %-15.15s | %-30.30s | %-15.15s |%n",
                                             c.getId(),
                                             c.getNombre(),
                                             c.getIdentificacion(),
