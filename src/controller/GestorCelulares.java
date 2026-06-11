@@ -1,9 +1,12 @@
 package controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import model.Celular;
 import persistencia.CelularDAO;
 import java.sql.SQLException;
 import java.util.List;
+import persistencia.ConexionDB;
 
 public class GestorCelulares {
    private CelularDAO celularDAO;
@@ -75,5 +78,26 @@ public class GestorCelulares {
             return null;
         }
     }
+    
+    public void actualizarStock(int idCelular, int nuevoStock) {
+    String sql = "UPDATE celulares SET stock = ? WHERE id = ?";
+    
+    // 1. Llamamos a tu Singleton para obtener la conexión única y global
+    Connection con = ConexionDB.getInstancia().getConexion();
+    
+    // 2. IMPORTANTE: Solo colocamos el PreparedStatement dentro del try() 
+    // No metas la "Connection con" ahí, porque el try-with-resources la cerraría automáticamente 
+    // al terminar el método, destruyendo tu Singleton para el resto de la aplicación.
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        
+        ps.setInt(1, nuevoStock);
+        ps.setInt(2, idCelular);
+        ps.executeUpdate();
+        
+    } catch (SQLException e) {
+        System.out.println("ERROR al actualizar el stock en la base de datos: " + e.getMessage());
+    }
+}
+    
 }
 
