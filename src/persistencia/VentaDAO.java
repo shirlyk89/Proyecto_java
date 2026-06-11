@@ -67,4 +67,18 @@ public class VentaDAO {
             conn.setAutoCommit(true);
         }
     }
+    
+    public double obtenerTotalVentas() throws SQLException {
+    double total = 0.0;
+    // NOTA: Asegúrate de que tu tabla se llame 'ventas' y la columna 'total' en tu BD
+    String sql = "SELECT SUM(total) AS total_ventas FROM ventas"; 
+    
+    try (PreparedStatement ps = getConexion().prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
+            total = rs.getDouble("total_ventas");
+        }
+    }
+    return total;
+}
 }
