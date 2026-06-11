@@ -55,7 +55,20 @@ public class MenuClientes {
                             }
                         }while (!Validador.validarNumero(telefono));
                         System.out.println("\n ¡Datos del cliente capturados correctamente!");
-                        System.out.println("Próximamente: Verificando unicidad en DB y guardando a través de ClienteDAO...");
+                        
+                          //Crear el objeto y llena los datos ingresados
+                        Cliente nuevoCliente = new Cliente();
+                        nuevoCliente.setNombre(nombre);
+                        nuevoCliente.setIdentificacion(identificacion);
+                        nuevoCliente.setCorreo(correo);
+                        nuevoCliente.setTelefono(telefono);
+
+                        // Llama al método del gestor 
+                        GestorClientes gestor = new GestorClientes();
+                        String resultado = gestor.registrarCliente(nuevoCliente);
+
+                        //  Imprimir la respuesta de la BD
+                        System.out.println(resultado); 
                         break;
                     case 2:
                       System.out.println("\n--- LISTADO DE CLIENTES REGISTRADOS ---");
