@@ -17,3 +17,10 @@ public class ArchivoUtils {
         }
     }
 }
+
+public static void limpiarConsola() {
+    System.out.println("\n----------------------------------------------------------------------");
+    System.out.println(">>>>>>>>>>>>>>>>>>>> NAVEGACION: % TECNOSTORE % <<<<<<<<<<<<<<<<<<<<<<");
+    System.out.println("----------------------------------------------------------------------\n");
+}
+}
