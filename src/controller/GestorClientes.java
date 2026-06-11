@@ -42,4 +42,15 @@ public class GestorClientes {
     public List<Cliente> obtenerTodosLosClientes() throws SQLException {
         return clienteDAO.listarTodos();
     }
+    
+   
+    public model.Cliente buscarClientePorCedula(String cedula) {
+        try {
+            
+            return clienteDAO.buscarPorIdentificacion(cedula);
+        } catch (java.sql.SQLException e) {
+            System.out.println(" Error en la base de datos al buscar cliente: " + e.getMessage());
+            return null;
+        }
+    }
 }
