@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import utils.ArchivoUtils;
 
 public class MenuReportes {
 
@@ -29,6 +30,7 @@ public class MenuReportes {
         int opcion = 0;
 
         do {
+            ArchivoUtils.limpiarConsola();
             System.out.println("\n=========================================");
             System.out.println("     MODULO DE REPORTES Y ANALISIS    ");
             System.out.println("=========================================");
@@ -52,6 +54,7 @@ public class MenuReportes {
 
                 switch (opcion) {
                     case 1:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n [ REPORTES: ALERTA DE BAJO STOCK ] ");
                        
                         List<Celular> bajoStock = celulares.stream()
@@ -69,6 +72,7 @@ public class MenuReportes {
                         break;
 
                     case 2:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n [ REPORTE: VALOR FINANCIERO DEL INVENTARIO ]");
                        
                         double valorTotal = celulares.stream()
@@ -85,6 +89,7 @@ public class MenuReportes {
                         break;
 
                     case 3:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n [ REPORTE: EXTREMOS DE PRECIOS ]");
                        
                         Optional<Celular> masCaro = celulares.stream()
@@ -102,6 +107,7 @@ public class MenuReportes {
                         break;
 
                     case 4:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("\n [ REPORTE: DISTRIBUCION POR GAMA ]");
                         
                         Map<CategoriaGama, Long> conteoPorGama = celulares.stream()
@@ -112,6 +118,7 @@ public class MenuReportes {
                         break;
 
                     case 5:
+                        ArchivoUtils.limpiarConsola();
                         System.out.println("Regresando al Menu Principal...");
                         break;
 
