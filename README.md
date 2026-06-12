@@ -41,3 +41,7 @@ src/
 ├── patron/         # Patrones de diseño (Strategy de descuentos)
 ├── util/           # Clases de apoyo (Validadores, ArchivoUtils)
 └── view/           # Menú principal y visualización
+
+
+
+enlace de IA: https://gemini.google.com/share/c7605e5fa76e
